@@ -1,12 +1,16 @@
-import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString, Matches } from 'class-validator';
+import { INVALID_EMAIL_MESSAGE } from 'src/shared/app.constants';
+import { EMAIL_REGEX } from '../schemas/util';
 
 export class SignInDto {
   @IsNotEmpty()
-  @IsEmail({}, { message: 'Enter valid email address' })
+  @IsEmail({}, { message: INVALID_EMAIL_MESSAGE })
+  @Matches(EMAIL_REGEX, {
+    message: INVALID_EMAIL_MESSAGE,
+  })
   readonly email: string;
 
   @IsNotEmpty()
   @IsString()
-  @MinLength(8)
   readonly password: string;
 }
