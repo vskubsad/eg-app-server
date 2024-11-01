@@ -16,7 +16,7 @@ export class AuthController {
 
   @Post('/signin')
   signIn(@Body() signIn: SignInDto): Promise<{ token: string }> {
-    this.logger.debug(`signing in for user: ${signIn.email}`);
+    this.logger.debug(`signing in for user : ${signIn.email}`);
     return this.authService.signIn(signIn);
   }
 }

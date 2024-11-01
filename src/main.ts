@@ -10,6 +10,6 @@ async function bootstrap() {
   app.enableCors();
   const port = 3000;
   await app.listen(port);
-  logger.log(`Application running on port ${port}`);
+  logger.verbose(`Application running on port ${port}`);
 }
 bootstrap();
